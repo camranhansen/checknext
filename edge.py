@@ -56,18 +56,29 @@ import numpy as np
 
 
 img = cv2.imread('board_1.jpg')
+
+# print(img[1,1])
 res = cv2.resize(img, (500, 400))
-res2 = copy.deepcopy(res)
+# res2 = copy.deepcopy(res)
 
 lower = [131, 37, 208]
 
 upper = [255, 161, 255]
 
-lower = np.array(lower)
-upper = np.array(upper)
-mask = cv2.inRange(res, lower, upper)
+p_in_range = []
+for i in range(500):
+    for j in range(400):
+        if lower[0] <= res[j,i][0] <= upper[0] and lower[1] <= res[j,i][1] <= upper[1] and lower[2] <= res[j,i][2] <= upper[2]:
+            p_in_range.append([i,j])
+# lower = np.array(lower)
+# upper = np.array(upper)
+# mask = cv2.inRange(res, lower, upper)
 # output = cv2.bitwise_and(res, res, mask=mask)
 
-cv2.imshow('image', mask)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# print(res.size()[1])
+#
+# cv2.imshow('image', mask)
+# print(mask)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+print(len(p_in_range))
