@@ -35,12 +35,15 @@ _______________________________________________________________
 
 
 
-COLORS (within certain tolerances)
+Avg COLORS (within certain tolerances)
 _______________________________________________________________
 Black square: rgb(112, 91, 85)
 White square: rgb(197, 184, 171)
 
 Black peice: rgb(52, 51, 51)
 White piece: rgb(208, 214, 170)
+
+
+
 """
 print("test")
