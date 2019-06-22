@@ -58,7 +58,7 @@ import copy
 import numpy as np
 
 
-img = cv2.imread('board_blue.jpg')
+img = cv2.imread('pink_squares_matte.jpg')
 
 # print(img[1,1])
 res = cv2.resize(img, (500, 400))
