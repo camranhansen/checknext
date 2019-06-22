@@ -49,6 +49,9 @@ R: 208-255
 G: 37-161
 B: 131-255
 
+Ranges for blue dots (RGB)
+(4, 0, 2)
+(75, 29, 102)
 """
 import cv2
 import copy
