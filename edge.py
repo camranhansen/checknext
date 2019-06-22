@@ -52,16 +52,22 @@ B: 131-255
 """
 import cv2
 import copy
+import numpy as np
 
 
 img = cv2.imread('board_1.jpg')
 res = cv2.resize(img, (500, 400))
 res2 = copy.deepcopy(res)
 
+lower = [131, 37, 208]
 
-cv2.imshow('image', res)
+upper = [255, 161, 255]
+
+lower = np.array(lower)
+upper = np.array(upper)
+mask = cv2.inRange(res, lower, upper)
+# output = cv2.bitwise_and(res, res, mask=mask)
+
+cv2.imshow('image', mask)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-lower = [131, 37, 208]
-upper = [255, 161, 255]
