@@ -44,6 +44,10 @@ Black peice: rgb(52, 51, 51)
 White piece: rgb(208, 214, 170)
 
 
+Ranges for pink squares:
+R: 208-255
+G: 37-161
+B: 131-255
 
 """
 print("test")
