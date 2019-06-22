@@ -38,6 +38,7 @@ for cnt in contours:
 # cv2.imshow("Mask", mask)
 # cv2.imshow("Edges", edges)
 
+cv2.rectangle(img, (contours[3][0][0], contours[3][0][1]), (contours[0][0][0], contours[0][0][1]),(0,255,0),3)
 
 # gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 # gray = cv2.GaussianBlur(gray, (5, 5), 0)
