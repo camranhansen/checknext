@@ -50,4 +50,18 @@ G: 37-161
 B: 131-255
 
 """
-print("test")
+import cv2
+import copy
+
+
+img = cv2.imread('board_1.jpg')
+res = cv2.resize(img, (500, 400))
+res2 = copy.deepcopy(res)
+
+
+cv2.imshow('image', res)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+lower = [131, 37, 208]
+upper = [255, 161, 255]
