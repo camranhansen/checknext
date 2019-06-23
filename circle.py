@@ -63,8 +63,8 @@ def get_piece_colour(img, cord0, cord1):
 
             print(len(p_in_range))
             print(len(p_not_in_range))
-            colour_of_piece="W" if len(p_not_in_range) > len(p_in_range) else "B"
+            colour_of_piece = "W" if len(p_not_in_range) > len(p_in_range) else "B"
             # cv2.imshow('piece_detected', cimg)
             # cv2.waitKey(0)
             # cv2.destroyAllWindows()
-        return colour_of_piece
+            return colour_of_piece
