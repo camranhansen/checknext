@@ -54,28 +54,21 @@ def squarify(location):
 
     warped = cv2.warpPerspective(img, M, (width, height))
 
-    squared_image = cv2.resize(warped, (800,800))
+    squared_image = cv2.resize(warped, (801,801))
 
 
     return squared_image
 
 
-def make_board():
-    board = {}
 
-    for x in range(0, 801, 100):
-        for y in range(0, 801, 100):
-            board[(x,y)] = "E"
-
-    return board
 
 # for pos in board:
 #     cv2.circle(res,pos, 3, (0,255, 0), 3)
 
-
 #
-cv2.imshow("test", squarify("small_1.jpg"))
-#
-cv2.waitKey(0)
+# #
+# cv2.imshow("test", squarify("small_1.jpg"))
+# #
+# cv2.waitKey(0)
 
 
