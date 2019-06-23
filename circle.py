@@ -16,8 +16,8 @@ def get_piece_colour(img, x, y):
 
     cimg = cimg[y:y+h, x:x+w]
     img = img[y:y+h, x:x+w]
-    cv2.imshow('piece_detected', img)
-    cv2.waitKey(0)
+    # cv2.imshow('piece_detected', img)
+    # cv2.waitKey(0)
     # apply blur to b&w image
     img = cv2.medianBlur(img,5)
     img = cv2.GaussianBlur(img,(5,5), cv2.BORDER_DEFAULT)
@@ -30,7 +30,7 @@ def get_piece_colour(img, x, y):
     # draw circles
     else:
         for i in circles[0, :]:
-            cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
+            # cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
             zerop=(0,0,0)
             zero=np.array(zerop)
             lowerp=(150, 150, 150)
@@ -58,7 +58,7 @@ def get_piece_colour(img, x, y):
             print(len(p_in_range))
             print(len(p_not_in_range))
             colour_of_piece = "W" if len(p_not_in_range) > len(p_in_range) else "B"
-            cv2.imshow('piece_detected', cimg)
-            cv2.waitKey(0)
+            # cv2.imshow('piece_detected', cimg)
+            # cv2.waitKey(0)
             cv2.destroyAllWindows()
             return colour_of_piece
