@@ -20,10 +20,10 @@ def get_piece_colour(img, cord0, cord1):
     h = x1 - x0
     w = y1 - y0
 
+    cimg = cimg[y:y+h, x:x+w]
     img = img[y:y+h, x:x+w]
-
-    # cv2.imshow('piece_detected', img)
-    # cv2.waitKey(0)
+    cv2.imshow('piece_detected', img)
+    cv2.waitKey(0)
     # apply blur to b&w image
     img = cv2.medianBlur(img,5)
     img = cv2.GaussianBlur(img,(5,5), cv2.BORDER_DEFAULT)
@@ -39,18 +39,18 @@ def get_piece_colour(img, cord0, cord1):
             cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
             zerop=(0,0,0)
             zero=np.array(zerop)
-            lowerp=(150, 150, 180)
+            lowerp=(150, 150, 150)
             lower = np.array(lowerp)
             p_in_range=[]
             p_not_in_range = []
 
-            cimg= cv2.medianBlur(cimg,5)
+            cimg = cv2.medianBlur(cimg,5)
 
-            height, width = img.shape[:2]
+            height, width = cimg.shape[:2]
             range_1= i[0]-i[2] if 0 < i[0]-i[2] < width else 0
             range_2= i[0]+i[2] if 0 < i[0]+i[2] < width else width
             range_3= i[1]-i[2] if 0 < i[1]-i[2] < height else 0
-            range_4 =  i[1]+i[2] if 0 < i[1]+i[2] < height else height
+            range_4 = i[1]+i[2] if 0 < i[1]+i[2] < height else height
             for i in range(int(range_1), int(range_2)):
                 for j in range(int(range_3), int(range_4)):
                     if 0 <= cimg[j, i][0] <= lower[0] and 0 <= cimg[j, i][1] <= lower[1] and 0 <= cimg[j, i][2] <= lower[2]:
@@ -64,7 +64,7 @@ def get_piece_colour(img, cord0, cord1):
             print(len(p_in_range))
             print(len(p_not_in_range))
             colour_of_piece = "W" if len(p_not_in_range) > len(p_in_range) else "B"
-            # cv2.imshow('piece_detected', cimg)
-            # cv2.waitKey(0)
-            # cv2.destroyAllWindows()
+            cv2.imshow('piece_detected', cimg)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
             return colour_of_piece
