@@ -15,15 +15,15 @@ def get_piece_colour(img, cord0, cord1):
     y1 = cord1[1]
 
     # crop image
-    x = x1
+    x = x0
     y = y0
     h = x1 - x0
     w = y1 - y0
 
-    crop_img = img[y:y+h, x:x+w]
-    cv2.imshow("cropped", crop_img)
-    cv2.waitKey(0)
+    img = img[y:y+h, x:x+w]
 
+    # cv2.imshow('piece_detected', img)
+    # cv2.waitKey(0)
     # apply blur to b&w image
     img = cv2.medianBlur(img,5)
     img = cv2.GaussianBlur(img,(5,5), cv2.BORDER_DEFAULT)
@@ -51,20 +51,20 @@ def get_piece_colour(img, cord0, cord1):
             range_2= i[0]+i[2] if 0 < i[0]+i[2] < width else width
             range_3= i[1]-i[2] if 0 < i[1]-i[2] < height else 0
             range_4 =  i[1]+i[2] if 0 < i[1]+i[2] < height else height
-            for i in range(range_1, range_2):
-                for j in range(range_3, range_4):
+            for i in range(int(range_1), int(range_2)):
+                for j in range(int(range_3), int(range_4)):
                     if 0 <= cimg[j, i][0] <= lower[0] and 0 <= cimg[j, i][1] <= lower[1] and 0 <= cimg[j, i][2] <= lower[2]:
                         p_in_range.append((i, j))
                     else:
                         p_not_in_range.append((i,j))
 
-            mask = cv2.inRange(cimg, zero, lower)
-            cv2.imshow('image', mask)
+            # mask = cv2.inRange(cimg, zero, lower)
+            # cv2.imshow('image', mask)
 
             print(len(p_in_range))
             print(len(p_not_in_range))
             colour_of_piece="W" if len(p_not_in_range) > len(p_in_range) else "B"
-            cv2.imshow('piece_detected', cimg)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            # cv2.imshow('piece_detected', cimg)
+            # cv2.waitKey(0)
+            # cv2.destroyAllWindows()
         return colour_of_piece

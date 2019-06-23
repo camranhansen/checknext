@@ -20,4 +20,4 @@ def display_grid(img, board):
 
 
 board_img = squarify("small_1.jpg")
-print(get_piece_colour((board_img), (0,0),(100,100)))
+print(get_piece_colour((board_img), (400, 400),(500, 500)))
