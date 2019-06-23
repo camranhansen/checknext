@@ -66,11 +66,32 @@ M = cv2.getPerspectiveTransform(src_pts, dst_pts)
 
 warped = cv2.warpPerspective(img, M, (width, height))
 
-res = cv2.resize(warped, (600,600))
-cv2.imshow("original", (cv2.resize(img, (600, 600))))
-cv2.imshow("test", res)
+res = cv2.resize(warped, (800,800))
 
+
+board = {}
+
+for x in range(0, 801, 100):
+    for y in range(0, 801, 100):
+        board[(x,y)] = "E"
+
+print(board)
+board[(0,0)] = "B"
+print(board)
+
+for pos in board:
+    cv2.circle(res,pos, 3, (0,255, 0), 3)
+
+
+#
+cv2.imshow("test", res)
+# #
+#
 cv2.waitKey(0)
+
+
+
+
 
 
 
