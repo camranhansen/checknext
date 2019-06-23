@@ -2,23 +2,17 @@ import cv2
 import numpy as np
 
 
-def get_piece_colour(img, cord0, cord1):
+def get_piece_colour(img, x, y):
 # save a copy and convert image to b&w
     cimg = img
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
     # input coordinates for cropping
     # (x0, y0) is upper left and (x1, y1) is lower right
-    x0 = cord0[0]
-    y0 = cord0[1]
-    x1 = cord1[0]
-    y1 = cord1[1]
 
-    # crop image
-    x = x0
-    y = y0
-    h = x1 - x0
-    w = y1 - y0
+
+    h = 100
+    w = 100
 
     img = img[y:y+h, x:x+w]
 
