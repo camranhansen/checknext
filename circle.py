@@ -17,8 +17,8 @@ def get_piece_colour(img, cord0, cord1):
     # crop image
     x = x1
     y = y0
-    h = x0 - x1
-    w = y1-y0
+    h = x1 - x0
+    w = y1 - y0
 
     crop_img = img[y:y+h, x:x+w]
     cv2.imshow("cropped", crop_img)
@@ -30,7 +30,7 @@ def get_piece_colour(img, cord0, cord1):
 
     # find circles using HoughCircles
     circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,60,param1=50,param2=30,minRadius=0,maxRadius=100)
-    if not circles:
+    if circles is None:
         return "E"
 
     # draw circles
@@ -68,4 +68,3 @@ def get_piece_colour(img, cord0, cord1):
             cv2.waitKey(0)
             cv2.destroyAllWindows()
         return colour_of_piece
-print(get_piece_colour())

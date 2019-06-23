@@ -2,7 +2,7 @@
 import cv2
 import numpy
 from contours import squarify
-# from circle import
+from circle import get_piece_colour
 
 def make_board():
     board = {}
@@ -17,3 +17,7 @@ def display_grid(img, board):
     #mutating function for image
     for pos in board:
         cv2.circle(img,pos, 3, (0,255, 0), 3)
+
+
+board_img = squarify("small_1.jpg")
+print(get_piece_colour((board_img), (0,0),(100,100)))
